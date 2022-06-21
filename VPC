@@ -1,0 +1,17 @@
+******************** virtual private clouds ************************
+many companies privately deploy their applications so that have control environment for their applications.
+by defaultm lambda functions are not launched in a VPC
+but you can so that:
+lambda functions can securely access your EC2 instances / RDS instances / other instances in your VPC!
+you can assign security group to your lambda functions for enhanced network security!
+
+# define in YAML:
+provider:
+  name : aws
+  runtime : python3.8
+  vpc:
+    securityGroupIds:
+      - <securitygroupid>
+    subnetIds:
+      - <subnetid1>
+      - <subnetid2>
