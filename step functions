@@ -23,5 +23,9 @@ set wait time as an input variable
 (2) "secondpath" : "$.waittime
 (3) at input json box: {"waittime":"10"} # set up wait time to 10 seconds
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+task can be a lambda function
 
+
+********************************************* use SAM to create step functions **********************************
 
