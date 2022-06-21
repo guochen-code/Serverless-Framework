@@ -1,0 +1,28 @@
+***************************************************** pass environment variables through serverless.yml **********************************************
+
+environment variables are good because they provide external configuration to your functions
+
+this way we can chnage a function's behavior without even changing the code of the function
+
+in serverless.yml:
+# define environment variable:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% global variables
+environment:
+  variable1:value1
+  variable2:value2
+  first_name: "James"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# define function 
+functions:
+  hello-env-james:
+    handler: handler.hello
+  hello-env-mat:
+    handler: handler.hello
+    environment:                         ### local variables
+      first_name:"Mat"  # mat will overwrite james 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+import os
+
+def hello(event, context):
+  return os.environ['first_name']
