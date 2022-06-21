@@ -1,0 +1,54 @@
+########################################################################### running lambda locally for testing
+(0) install VS code
+(1) install aws toolkit for VS code
+(2) aws console - iam - users - security credentials - create access key
+(3) use aws credentials to connect the toolkit to aws 
+(4) install AWS CLI
+(5) set up AWS configuration
+
+# terminal commands:
+aws sts get-caller-identity
+aws configure # will ask for aws access key Id and secret key
+
+(6) install and run Docker
+(7) install the AWS serverless application model CLI (SAM) - allows to define, test, and deploy a serverless application.
+
+**************************************** SAM (serverless application model) ****************************************** just like serverless framework
+benefits:
+- single-deployment
+- extension of aws cloudformation
+- enforces built-in best practices as code revies
+- local debugging and testing
+- deep integration with development tools
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# commands:
+sam init # follow instructions 
+lst # find the new app: sam-app
+cd sam-app # go to the app
+ls # see what included
+code . # open in VS code
+###### just like before, change YAML and function file as you like !!!!!!!
+sam build # build
+sam local invoke # error: running aws SAM locally requires Docker!!!, so start the downloaded Docker and then sam local invoke again.
+# you can see all the returns just like working on aws cloud
+
+sam deploy --guided # deploy and follow the given instructions
+# what happened behin the scene: pack all files, create s3 bucket and upload the package to S3 bucket, then use aws cloud formation to deploy
+# another benefit: look for a link in output. This is where our API lives. The event here is passing hello to our get, return the message.!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+curl API-link # can run in terminal
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# deploy API locally:
+sam local start-api
+# type in browser: 127.0.0.1 3000/hello # hello is important trigger!!!
+
+# if changes in code script, need to rebuild
+sam build
+sam local start-api # can see the new changes then
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# invoke your lambda function directly:
+sam local invoke "<function name>" -e events.json
