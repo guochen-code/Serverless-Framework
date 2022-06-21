@@ -1,0 +1,74 @@
+******************************************************************** create and open a project in IDE *****************************************************************
+sls # return preconfigured templates NodeJS and Python etc.
+sls create --help # more details and instructions
+sls create --template aws-python3 --path python-example # create a project
+ls # list all projects created so far, i.e. aws-node-project hello-world-gpython and python-example
+cd python-example # go to the specific directory of the specific project
+code . # open all in the VS code studio
+
+sls deploy # redeploy completely takes longer time
+sls deploy function -f <function name> # only update changes in the function, take shorter time
+
+sls invoke -f <function name>
+sls invoke -f <function name> --log # stream log
+sls logs -f <function name> # all logs in history
+
+sls remove # clean up completely
+
+********************************************************************* YAML *************************************************************
+--- # realize it is YML
+numbers:
+  - one
+  - two
+  - three
+
+numers: [one,two,three] # equivalent in list format
+
+# equivalent in json format
+{
+"numbers": [
+    "one",
+    "two",
+    "three"
+  ]
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% YAML vs Json
+author: &jPaul
+  name: james
+  last-name: Paul
+
+books:
+  - 1923:
+    author: *jPaul
+  - My Biography:
+    authorL *jPaul
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Json vs YAML
+{
+  "author": {
+    "name" : "James",
+    "last-name" : "Paul"
+  },
+  
+  "books": [
+    {
+      "1923" : {
+          "author" : {
+              "name": "James",
+              "last-name": "Paul"
+              }
+          }
+      },
+      {
+      "My Biography" : {
+          "author" : {
+              "name": "James",
+              "last-name": "Paul"
+              }
+          }
+      }
+    ]
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
