@@ -52,3 +52,6 @@ sam local start-api # can see the new changes then
 
 # invoke your lambda function directly:
 sam local invoke "<function name>" -e events.json
+
+# delete
+aws cloudformation delete -stack --stack-name sam-app --region us-east-1
