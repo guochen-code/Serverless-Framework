@@ -1,0 +1,12 @@
+*********************************************************** as of Feb 2022:
+pay per calls: 
+- first 1,000,000 requests for free
+- 0.2 per million requests thereafter ($0.0000002 per requests)
+
+pay per duration (in increments of 100ms): ################# know how much ram you need
+- 400,000 GB-seconds of compute time per month free
+  == 400,000 second if function is 1GB RAM
+  == 3,200,000 second if function is 128 MB RAM 
+- after that $1 for 600,000 GB-seconds
+
+if you app doesn't use lambda functions, or they don't get trigger, then you don't get billed for them.
